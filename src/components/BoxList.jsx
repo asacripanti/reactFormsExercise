@@ -14,7 +14,9 @@ export default function BoxList(){
         }
         setBoxes(prevBoxes => [...prevBoxes, newBox]);   
     }
-  
+    const removeBox = (index) => {
+        setBoxes(prevBoxes => prevBoxes.filter((box, i) => i !== index));
+    };
     return(
         <div>
             {boxes.map(
@@ -24,6 +26,7 @@ export default function BoxList(){
                         height={box.height}
                         width={box.width}
                         backgroundColor={box.backgroundColor}
+                        removeBox={() => removeBox(index)}
                     />
                 )
             )}
